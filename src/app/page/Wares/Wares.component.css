@@ -1,0 +1,13 @@
+.icon{
+    color: rgb(165, 84, 241) !important;
+}
+
+.cont{
+    background-color: rgb(240, 240, 240);
+}
+
+.outShadow:hover{
+    -webkit-box-shadow: 0px 2px 2px 1px rgba(87,199,240,1);
+-moz-box-shadow: 0px 2px 2px 1px rgba(87,199,240,1);
+box-shadow: 0px 2px 2px 1px rgba(87,199,240,1);
+}

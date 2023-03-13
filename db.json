@@ -1,0 +1,22 @@
+{
+  "PostProduct": [
+    {
+      "Code": "P-3456",
+      "Name": "PName2",
+      "Price": "23",
+      "Description": "destrp",
+      "id": 12
+    }
+  ],
+  "PostWares": [
+    {
+      "Code": "w-008",
+      "Name": "name00",
+      "Description": "test name",
+      "id": 16
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}

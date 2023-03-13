@@ -1,0 +1,66 @@
+<div class="w-100 h-100 cont">
+    <div class="container p-1 pt-5">
+        <div class="container-fluid pt-5">
+            <div class="card">
+                <div class="card-header">
+                    <div class="w-100 p-3 fs-5">
+                        <i class="fa-solid fa-layer-group icon"></i> &nbsp;
+                        Stocking 
+                    </div>
+                </div>        
+                <div class="card-body">
+                    <div class="w-100 text-end mb-3">
+                        <button class="btn text-info outShadow" (click)="OpenDialog()">
+                            <i class="fa-solid fa-plus"></i>
+                            Add Stock
+                        </button>
+                    </div>
+                    <table class="table display" id="myTable" >
+                        <thead>
+                            <div class="m-4"></div>
+                            <tr >
+                                <th scope="col">#</th>
+                                <th scope="col">Stock ID</th>
+                                <th scope="col">Product Name</th>
+                                <th scope="col">Wares Name</th>
+                                <th scope="col">Stock Date</th>
+                                <th scope="col">On Hand</th>
+                                <th scope="col">Action</th>
+                            </tr>
+                        </thead>
+                         <tbody > <!-- i as index == value -->
+                            <tr *ngFor="let item of StockDataApi;">                                  <!-- i = index == index -->
+                                <td>
+                                    <input type="checkbox" value="{{item.id}}" (change)="CheckBoxDelete($event)">
+                                </td>
+                                <th scope="row">{{item.id}}</th>
+                                <td>{{item.product.name}}</td>
+                                <td>{{item.ware.name}}</td>
+                                <td>{{item.documentDate}}</td>
+                                <td>{{item.quantity}}</td>
+                                
+                                <td>
+                                    <!-- Delete -->
+                                    <button class="btn text-danger" (click)="DeleteOnlyStock(item.id)">
+                                        <i class="fa-solid fa-trash-can"></i>
+                                    </button>
+                                    <!-- Update -->
+                                    <button class="btn text-info" (click)="OpenDialogDetail(item)">
+                                        <i class="fa-solid fa-eye"></i>
+                                    </button>
+                                    <!-- Edit -->
+                                    <button class="btn  text-success"  (click)="EditStock(item)">
+                                        <i class="fa-regular fa-pen-to-square"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="text-center" *ngIf="ArrStockID.length>0">
+                        <button (click)="DeleteAllCheckBox()"  class="btn btn-danger">Delete</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,48 @@
+<h1 mat-dialog-title class="ps-5 pt-4 ">Add Product</h1>
+<div mat-dialog-content class="example-full-width">
+    <form class="example-form ps-4" [formGroup]="StockForm"><!--  (ngSubmit)="addProduct()" -->
+        <div class="row  formDialog">
+
+            <div class="col-lg-12 col-md-6 col-sm-12" [hidden]="edit">
+                <mat-form-field appearance="fill" class="example-full-width" [hidden]="edit">
+                    <mat-label>Product Name</mat-label>
+                    <mat-select  formControlName="productCode">
+                        <mat-option *ngFor="let item of Product" [value]="item.code">
+                            {{item.name}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div class="col-lg-12 col-md-6 col-sm-12" [hidden]="edit">
+                <mat-form-field appearance="fill" class="example-full-width" [hidden]="edit">
+                    <mat-label>Wares Name</mat-label>
+                    <mat-select formControlName="wareCode">
+                        <mat-option *ngFor="let item of Wares" [value]="item.code" >
+                            {{item.name}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div class="col-lg-12 col-md-6 col-sm-12"  [hidden]="!edit">
+                <mat-form-field class="example-full-width">
+                    <mat-label>Stock ID</mat-label>
+                    <input matInput placeholder="ID" class="inputtext" formControlName="StockId">
+                </mat-form-field>
+            </div>
+            <div class="col-lg-12 col-md-6 col-sm-12">
+                <mat-form-field class="example-full-width">
+                    <mat-label>Quantity</mat-label>
+                    <input matInput placeholder="Quantity" class="inputtext" formControlName="quantity">
+                </mat-form-field>
+            </div>
+          
+        </div>
+
+        <div class="text-end w-100 pe-4">
+            <button mat-raised-button color="warn" (click)="CloseDialog()" >Close</button>
+            <span class="p-2"></span>
+            <button mat-raised-button color="accent" (click)="CreateStocking()">{{btnCreate}}</button>
+        </div>
+    </form>
+    <!--  {{BottonDialog}}-->
+</div>

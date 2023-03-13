@@ -1,0 +1,45 @@
+.example-container mat-form-field + mat-form-field {
+    margin-left: 8px;
+  }
+  .formse{
+    width: 400px;
+    height: 500px;
+    /* background-color: bisque; */
+  }
+  mat-form-field {
+    width: 400px;
+    margin-top: 20px !important;
+  }
+
+  .example-right-align {
+    text-align: right;
+  }
+  
+  input.example-right-align::-webkit-outer-spin-button,
+  input.example-right-align::-webkit-inner-spin-button {
+    display: none;
+  }
+
+  .container{
+   
+    width: 100% !important;
+   margin: 0px 0px 0px 0px !important;
+  }
+
+  .dd{
+ 
+    background-color: gainsboro !important;
+  }
+
+  .pass{
+    margin-left: 0px !important;
+  }
+
+  .log{
+    font-size: 35px !important;
+    font-weight: 700 !important;
+  }
+  
+  .checked{
+    color: aqua !important;
+  }

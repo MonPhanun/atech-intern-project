@@ -1,0 +1,62 @@
+<div class="w-100 h-100 cont">
+    <div class="container p-5">
+        <div class="container-fluid p-5">
+            <div class="card">
+                <div class="card-header">
+                    <div class="w-100 p-3 fs-5">
+                        <i class="fa-solid fa-layer-group icon"></i> &nbsp;
+                        Wares 
+                    </div>
+                    <!-- <button class="btn text-danger" (click)="tootherpage()">
+                        Home page
+                    </button> -->
+                </div>        
+                <div class="card-body">
+                    <div class="w-100 text-end mb-3">
+                        <button class="btn text-info outShadow" (click)="openWareDialog()">
+                            <i class="fa-solid fa-plus"></i>
+                            Add Wares
+                        </button>
+                    </div>
+                    <table class="table display" id="myTable" >
+                        <thead>
+                            <div  class="m-4"></div>
+                            <tr >
+                                <th scope="col">#</th>
+                                <th scope="col">ID</th>
+                                <th scope="col">Code</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">Description</th>
+                                <th scope="col">Action</th>
+                            </tr>
+                        </thead>
+                         <tbody > <!-- i as index == value -->
+                            <tr *ngFor="let iten of AllWareApi;">                                  <!-- i = index == index -->
+                               <td>
+                                <input type="checkbox" value="{{iten.id}}" [checked]="check" #data (change)="deleteWare($event)">
+                               </td>
+                                <td>{{iten.id}}</td>
+                                <td>{{iten.code}}</td>
+                                <td>{{iten.name}}</td>
+                                <td>{{iten.description}}</td>
+                                <td>
+                                    <button class="btn text-danger" (click)="DeleteOnlyWaresApi(iten.id)">
+                                        <i class="fa-solid fa-trash-can"></i>
+                                    </button>
+                                    <button class="btn  text-success">
+                                        <i class="fa-regular fa-pen-to-square" (click)="OnEditApi(iten)"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                      
+                          
+                        </tbody>
+                    </table>
+                    <div class="text-center" *ngIf="this.IdWares.length>0">
+                        <button (click)="CheckBoxDelete()"  class="btn btn-danger">Delete</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,122 @@
+<div class="w-100 h-100 cont">
+    <div class="container p-5">
+        <div class="container-fluid p-5">
+            <div class="card">
+                <div class="card-header">
+                    <div class="w-100 p-3 fs-5">
+                        <i class="fa-solid fa-layer-group icon"></i> &nbsp;
+                        Searching 
+                    </div>
+                    <!-- <button class="btn text-danger" (click)="tootherpage()">
+                        Home page
+                    </button> -->
+                </div>        
+                <div class="card-body mb-4">
+                    <!-- <div class="w-100 text-end mb-3">
+                        <button class="btn text-info outShadow" >
+                            <i class="fa-solid fa-plus"></i>
+                            Add Wares
+                        </button>
+                    </div> -->
+               
+                    <div class="text-start w-100 fs-5 mt-4 ms-4">
+                        <i class="fa-solid fa-hand-point-right me-3"></i>
+                        Choice type you want to find .
+                    </div> 
+
+                     <div class="w-100 text-center mb-3 mt-5">
+                        <input type="radio" value="Product" (change)="CheckShow($event)" id="pro" name="data" class="product1"> <label for="pro" class="product">Product</label>
+
+                        <input type="radio" value="Wares"  (change)="CheckShow($event)" id="pro1" name="data" class="product1"> <label for="pro1" class="product">Ware</label>
+
+                        <input type="radio" value="Stock" (change)="CheckShow($event)" id="pro2" name="data" class="product1"> <label for="pro2" class="product">Stock</label>
+                    </div> 
+                    <!-- Product Search -->
+                    <div class="text-center w-100 fs-5 mt-5 " *ngIf="searchCheck=='Product'">
+                        <mat-form-field appearance="outline" class="example-full-width">
+                            <mat-label>Enter Product ID</mat-label>
+                            <input matInput placeholder="Enter  ID" (input)="InputVaue($event)">   
+                          </mat-form-field>
+                          <button class="btn btn-info outShadow" (click)="SearchProduct()">
+                            <i class="fa-brands fa-searchengin"></i>          
+                        </button>
+                    </div> 
+                    <!-- Wears Search -->
+                    <div class="text-center w-100 fs-5 mt-5 " *ngIf="searchCheck=='Wares'">
+                        <mat-form-field appearance="outline" class="example-full-width">
+                            <mat-label>Enter Wares ID</mat-label>
+                            <input matInput placeholder="Enter ID" (input)="InputVaue($event)">   
+                          </mat-form-field>
+                          <button class="btn btn-info outShadow" (click)="SearchWears()">
+                            <i class="fa-brands fa-searchengin"></i>          
+                        </button>
+                    </div> 
+                    <!-- Stock Search -->
+                    <div class="text-center w-100 fs-5 mt-5 " *ngIf="searchCheck=='Stock'">
+                        <mat-form-field appearance="outline" class="example-full-width">
+                            <mat-label>Enter Stock ID</mat-label>
+                            <input matInput placeholder="Enter ID" (input)="InputVaue($event)">   
+                          </mat-form-field>
+                          <button class="btn btn-info outShadow" (click)="SearchStock()">
+                            <i class="fa-brands fa-searchengin"></i>          
+                        </button>
+                    </div> 
+
+
+                    <div class="text-start w-100 fs-5 mt-4 ms-4" *ngIf="ResultProduct.length!=0">
+                        <div class="text-start w-100 fs-5 mt-4 ms-4" *ngIf="ResultProduct.data.length!=0; else dd;">
+                            <div class="w-100 text-start mb-3 mt-4 found">
+                                    Product has found !
+                            </div> 
+                            <b>ID</b>  : {{ResultProduct.data[0].id}} <br><br>
+                            <b>Code</b>  : {{ResultProduct.data[0].code}} <br><br>
+                            <b>Name</b> : {{ResultProduct.data[0].name}} <br><br>
+                            <b>Price</b> : {{ResultProduct.data[0].price}} <br><br>
+                            <b>Description</b> : {{ResultProduct.data[0].description}} <br><br>
+                        </div> 
+                        
+                            <ng-template #dd>
+                                <div class="w-100 text-start text-danger mb-3 mt-4 found">
+                                Not found !
+                                 </div> 
+                            </ng-template>
+                        
+                    </div> 
+                    <div class="text-start w-100 fs-5 mt-4 ms-4" *ngIf="ResultWares.length!=0">
+                        <div class="text-start w-100 fs-5 mt-4 ms-4" *ngIf="ResultWares.data.length!=0; else dd">
+                            <div class="w-100 text-start mb-3 mt-4 found">
+                                Ware has found !
+                             </div> 
+                            <b>ID</b> : {{ResultWares.data[0].id}} <br><br>
+                            <b>Code</b> : {{ResultWares.data[0].code}} <br><br>
+                            <b>Name</b> : {{ResultWares.data[0].name}} <br><br>
+                            <b>Description</b> : {{ResultWares.data[0].description}} <br><br>
+                        </div> 
+                        <ng-template #dd>
+                            <div class="w-100 text-start text-danger mb-3 mt-4 found">
+                            Not found !
+                             </div> 
+                        </ng-template>
+                    </div> 
+                    <div class="text-start w-100 fs-5 mt-4 ms-4" *ngIf="ResultStock.length!=0">
+                        <div class="text-start w-100 fs-5 mt-4 ms-4" *ngIf="ResultStock.data.length!=0; else dd">
+                            <div class="w-100 text-start mb-3 mt-4 found">
+                                Stock has found !
+                             </div> 
+                            <b>Stock ID</b> : {{ResultStock.data[0].id}} <br><br>
+                            <b>Document Date</b> : {{ResultStock.data[0].documentDate}} <br><br>
+                            <b>Product ID</b> : {{ResultStock.data[0].productId }} <br><br>
+                            <b>Ware ID</b> : {{ResultStock.data[0].wareId}} <br><br>
+                        </div> 
+                        <ng-template #dd>
+                            <div class="w-100 text-start text-danger mb-3 mt-4 found">
+                            Not found !
+                             </div> 
+                        </ng-template>
+                    </div> 
+    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
